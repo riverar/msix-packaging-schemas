@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- @@BEGIN_SDKSPLIT
+
+  !!!WARNING!!!
+
+  This schema is closed for any changes.  Any changes to this schema file
+  are moderated by the AppModel team.  Changes to the schema can potentially
+  break .appx packages and manifests as well as product and test code that
+  relies on this schema.
+
+  Please contact the 'manifest' alias if you need to request a change to
+  this schema.
+
+@@END_SDKSPLIT -->
+<!--
+  Copyright (c) Microsoft Corporation. All rights reserved.
+
+  Defines common types shared by multiple namespaces.  This schema is imported
+  into various product-specific schemas that define elements and attributes
+  based on types declared here.
+-->
+
+<xs:schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://schemas.microsoft.com/appx/manifest/types/2"
+    xmlns="http://schemas.microsoft.com/appx/manifest/types/2">
+
+    <xs:simpleType name="ST_TrustLevel_UAP18">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="appContainer"/>
+      <xs:enumeration value="mediumIL"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ST_RuntimeBehavior_UAP18">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="windowsApp"/>
+      <xs:enumeration value="packagedClassicApp"/>
+      <xs:enumeration value="win32App"/>
+      <xs:enumeration value="appSilo"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- @@BEGIN_SDKSPLIT
+
+  AppData MANIFEST SCHEMA
+
+  !!!WARNING!!!
+
+  Don't make any changes to this schema.  Changes will affect a wide range of
+  partners and can potentially break product and test code, as well as existing
+  .appx packages and manifests. Please follow https://microsoft.sharepoint.com/teams/appxmanifest/SitePages/Home.aspx
+  if you need to request any addition or modification.
+
+@@END_SDKSPLIT -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://schemas.microsoft.com/appx/manifest/appdata/windows10"
+           xmlns="http://schemas.microsoft.com/appx/manifest/appdata/windows10"
+           xmlns:t="http://schemas.microsoft.com/appx/manifest/types"
+           xmlns:f="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+           >
+
+  <xs:import namespace="http://schemas.microsoft.com/appx/manifest/types"/>
+  <xs:import namespace="http://schemas.microsoft.com/appx/manifest/foundation/windows10"/>
+
+  <xs:element name="ApplicationData" type="CT_ApplicationData" substitutionGroup="f:ApplicationDataChoice"/>
+
+  <xs:complexType name="CT_ApplicationData">
+    <xs:all>
+      <xs:element name="MachineFolder" type="CT_MachineFolder" minOccurs="0" maxOccurs="1"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="CT_MachineFolder">
+    <xs:attribute name="Sddl" type="xs:string" use="optional"/>
+  </xs:complexType>
+</xs:schema>

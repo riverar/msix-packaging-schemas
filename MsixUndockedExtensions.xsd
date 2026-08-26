@@ -1,0 +1,57 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://schemas.microsoft.com/msix/undockedextensions"
+    xmlns:x="http://schemas.microsoft.com/msix/undockedextensions"
+    xmlns:t="http://schemas.microsoft.com/appx/manifest/types">
+
+  <xs:import namespace="http://schemas.microsoft.com/appx/manifest/types"/>
+
+  <xs:element name="UndockedExtensions">
+    <xs:complexType>
+      <xs:choice minOccurs="1" maxOccurs="1000">
+        <xs:element name="PackagingExtension">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SupportedInterface" minOccurs="1" maxOccurs="1000">
+                <xs:complexType>
+                  <xs:attribute name="Iid" type="t:ST_GUID" use="required" />
+                  <xs:attribute name="Version" type="t:ST_VersionQuad" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="DllPath" type="t:ST_DllFile" use="required" />
+          </xs:complexType>
+          <xs:unique name="Unique_Iid">
+            <xs:selector xpath="x:SupportedInterface" />
+            <xs:field xpath="@Iid" />
+          </xs:unique>
+        </xs:element>
+        <xs:element name="SipExtension">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SupportedFileType" minOccurs="1" maxOccurs="1000">
+                <xs:complexType>
+                  <xs:attribute name="FileType" type="t:ST_FileType" use="required" />
+                  <xs:attribute name="Version" type="t:ST_VersionQuad" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="DllPath" type="t:ST_DllFile" use="required" />
+          </xs:complexType>
+          <xs:unique name="Unique_FileType">
+            <xs:selector xpath="x:SupportedFileType" />
+            <xs:field xpath="@FileType" />
+          </xs:unique>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Unique_PackagingExtension_Dll">
+      <xs:selector xpath="x:PackagingExtension" />
+      <xs:field xpath="@DllName" />
+    </xs:unique>
+    <xs:unique name="SipExtension_Dll">
+      <xs:selector xpath="x:PackagingExtension" />
+      <xs:field xpath="@DllName" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

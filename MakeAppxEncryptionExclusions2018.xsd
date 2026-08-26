@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://schemas.microsoft.com/msix/makeappx/2018/EncryptionExclusions"
+    xmlns:t="http://schemas.microsoft.com/appx/manifest/types">
+
+    <xs:import namespace="http://schemas.microsoft.com/appx/manifest/types"/>
+    <xs:element name="EncryptionExclusionFiles">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="4294967295" name="File" minOccurs="0">
+                    <xs:complexType>
+                        <xs:attribute name="Name" type="t:ST_FileName" use="required" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
